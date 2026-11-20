@@ -1,0 +1,10 @@
+{
+  "name": "qoderwake-8bit-office",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "8-bit virtual office for QoderWake Wakers with click-to-chat task assignment",
+  "scripts": {
+    "start": "node server.mjs"
+  }
+}

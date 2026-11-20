@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Berca MSP · Digital Twin Office</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <div class="topbar">
+      <a class="brand" href="/" aria-label="Berca MSP Office">
+        <span class="logo" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 3 29 10.5v11L16 29 3 21.5v-11L16 3Z" stroke="currentColor" stroke-width="1.5"/><path d="m3 10.5 13 8 13-8M16 18.5V29M10 7l13 8v10" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        <span><span class="title">BERCA <span class="sep">/</span> MSP OFFICE</span><span class="sub" id="hud-sub">MENGHUBUNGKAN QODERWAKE…</span></span>
+      </a>
+      <div class="hud-right">
+        <span class="edition">DIGITAL TWIN <b>2D</b></span>
+        <button id="conn" class="conn offline" type="button">OFFLINE</button>
+        <a id="console-link" class="btn ghost console-link" href="http://127.0.0.1:19820" target="_blank" rel="noreferrer">Console ↗</a>
+        <a id="classic-link" class="btn ghost" href="/classic/index.html">8-bit backup ↗</a>
+        <time id="clock">--:--</time>
+      </div>
+    </div>
+    <div class="team-bar"><span class="team-label">WORKSPACE</span><nav id="roster" aria-label="Waker dan percakapan grup"></nav></div>
+  </header>
+
+  <main id="stage">
+    <div class="scene-heading"><div><div class="eyebrow">VIRTUAL WORKSPACE / 01</div><h1>Your team, in one place.</h1><p>Ruang kerja Berca MSP BaaS</p></div><span class="view-tag">ISOMETRIC VIEW</span></div>
+    <div id="office-viewport">
+      <canvas id="office" width="1200" height="620" aria-label="Kantor isometrik 2D. Pilih waker lewat karakter atau tombol di bar workspace. Board HLD di dinding bisa diklik untuk menampilkan hologram."></canvas>
+      <button id="hld-board" type="button" aria-label="Tampilkan hologram HLD Berca MSP BaaS" aria-expanded="false" aria-controls="hld-hologram" title="Klik untuk memproyeksikan HLD"></button>
+      <section id="hld-hologram" aria-labelledby="hld-title" hidden>
+        <div class="hologram-content">
+          <header class="hologram-head"><div><span class="eyebrow">ARCHITECTURE PROJECTION</span><h2 id="hld-title">Hybrid BaaS · HLD</h2></div><button id="hld-close" class="x" type="button" aria-label="Tutup hologram">×</button></header>
+          <a id="helios-hologram" href="https://helios.cohesity.com/sign-in" target="_blank" rel="noopener noreferrer" aria-label="Buka Cohesity Helios di tab baru">
+            <img src="/baas-hld.svg" width="1440" height="800" alt="HLD Berca MSP BaaS: backup AWS ap-southeast-3 multi-tenant dan cluster on-prem, dikelola melalui Cohesity Helios.">
+          </a>
+          <footer class="hologram-footer">
+            <div class="zoom-controls hologram-zoom" role="group" aria-label="Ukuran seluruh frame hologram">
+              <button id="hld-zoom-out" type="button" aria-label="Perkecil frame hologram" aria-controls="hld-hologram">−</button>
+              <button id="hld-zoom-reset" type="button" aria-label="Ukuran frame hologram 100%; kembalikan ke 100%" aria-controls="hld-hologram" aria-live="polite" aria-atomic="true" title="Kembali ke ukuran frame hologram 100%">100%</button>
+              <button id="hld-zoom-in" type="button" aria-label="Perbesar frame hologram" aria-controls="hld-hologram">+</button>
+            </div>
+            <a class="hologram-link" href="https://helios.cohesity.com/sign-in" target="_blank" rel="noopener noreferrer">Buka Cohesity Helios <span aria-hidden="true">↗</span></a>
+          </footer>
+        </div>
+      </section>
+    </div>
+    <div class="scene-footer">
+      <div id="hint"><span class="hint-mark" aria-hidden="true">↖</span><span>Pilih karakter untuk membuka percakapan.<small>Gerakan ilustratif · koneksi dan percakapan dari integrasi live.</small></span></div>
+      <div class="render-controls"><span id="render-mode">CANVAS 2D · MAX 30 FPS</span><div class="zoom-controls" role="group" aria-label="Ukuran tampilan kantor"><button id="zoom-out" type="button" aria-label="Perkecil kantor">−</button><button id="zoom-fit" type="button" aria-label="Pas-kan kantor ke layar" title="Kembali ke ukuran pas layar">100%</button><button id="zoom-in" type="button" aria-label="Perbesar kantor">+</button></div><button id="motion-toggle" class="btn ghost" type="button" aria-pressed="false">Jeda animasi</button></div>
+    </div>
+    <div id="toast" role="status" hidden></div>
+  </main>
+
+  <aside id="chat" class="closed" aria-hidden="true" inert aria-label="Percakapan waker">
+    <header class="chat-head">
+      <canvas id="chat-portrait" width="96" height="112"></canvas>
+      <div class="chat-id"><div class="chat-name" id="chat-name">—</div><div class="chat-role" id="chat-role"></div><div class="chat-status"><span id="chat-dot" class="dot"></span><span id="chat-status-text">—</span></div></div>
+      <button id="chat-close" class="x" type="button" aria-label="Tutup percakapan">×</button>
+    </header>
+    <div id="chat-banner" class="banner" hidden></div>
+    <section id="summer-controls" class="summer-controls" hidden aria-label="Menu Summer">
+      <div class="summer-actions" role="group" aria-label="Pilih akses Summer">
+        <button id="summer-task-chat" class="btn" type="button" aria-controls="chat-form">1. Task Chat</button>
+        <button id="summer-cli-console" class="btn ghost" type="button" aria-describedby="summer-console-note">2. CLI Console ↗</button>
+      </div>
+      <p>Task Chat: berikan task lewat kolom percakapan di bawah.</p>
+      <p id="summer-console-note">CLI Console: buka Command Prompt baru di laptop server office.</p>
+      <code>cd /d D:\qwen\Apps\cohesity\msv\<br>qwen --continue</code>
+      <p class="summer-note">CLI melanjutkan sesi terakhir Qwen; bisa berbeda dari sesi Task Chat. Hindari menjalankan task yang sama bersamaan.</p>
+      <div id="summer-console-status" role="status" aria-live="polite" hidden></div>
+    </section>
+    <section id="admin-controls" class="admin-controls" hidden aria-label="Izin wakeadmin">
+      <div><strong>Kontrol eksekusi</strong> · Baca/cari/analisis biasa langsung. Eksekusi: aksi → target → dampak → izin lo → jalan. Guard tetap melindungi file sensitif.</div>
+      <span id="admin-approval-status" role="status">Approval keamanan dikelola di Console QoderWake.</span>
+      <div class="admin-actions"><button id="admin-history" class="btn ghost" type="button" aria-pressed="false">RIWAYAT CHAT LAMA</button><a id="admin-console-link" class="btn ghost" href="http://127.0.0.1:19820/conversations/entry/latest?waker=7c582ea8489a" target="_blank" rel="noreferrer">BUKA TAB CONSOLE ↗</a></div>
+      <div class="admin-note">Sesi native terpisah dari chat lama; tidak ada task yang dikirim ulang otomatis. Jika panel tidak termuat, buka tab Console.</div>
+    </section>
+    <iframe id="admin-console" title="Sesi interaktif wakeadmin di Console QoderWake" referrerpolicy="no-referrer" hidden></iframe>
+    <div id="chat-log" class="chat-log" aria-live="polite"></div>
+    <div class="quick" id="quick-tasks"></div>
+    <form id="chat-form"><textarea id="chat-input" rows="2" maxlength="8000" aria-label="Pesan atau task" placeholder="Tulis pesan atau task…"></textarea><button id="send" type="submit" aria-label="Kirim pesan">Kirim ↑</button></form>
+  </aside>
+</div>
+<script src="/twin-renderer.js"></script>
+<script src="/game.js"></script>
+</body>
+</html>

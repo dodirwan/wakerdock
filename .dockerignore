@@ -1,0 +1,16 @@
+.git
+.gitignore
+.gitattributes
+data
+node_modules
+npm-debug.log*
+*.log
+*.err
+.env
+.env.*
+Dockerfile
+.dockerignore
+docker-compose.yml
+README.md
+.DS_Store
+Thumbs.db

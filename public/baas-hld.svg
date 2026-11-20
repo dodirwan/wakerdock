@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="800" viewBox="0 0 1440 800" role="img" aria-labelledby="title description">
+  <title id="title">BERCA MSP · BACKUP AS A SERVICE</title>
+  <desc id="description">Hybrid multi-tenant architecture in AWS region ap-southeast-3 and on premises. User_Tenant_X in ap-southeast-3c retains the source label Tenant_Y_VPC. User_Tenant_Y in ap-southeast-3b retains the source label Tenant_X_VPC. Dashed cyan arrows carry workload backups to the Berca MSP Cohesity cluster. Helios centrally manages the AWS MSP cluster and the on-premises Fortknow_Backup_Cluster through dashed green connections. An administrator accesses Helios using secure communication. Both backup environments have tenant X, Y and Z external S3 storage domains, each with a 10TB bucket. No cloud-to-on-premises replication is depicted.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1c32"/>
+      <stop offset="1" stop-color="#050d1b"/>
+    </linearGradient>
+    <linearGradient id="cloud-panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#11283e"/>
+      <stop offset="1" stop-color="#0a1729"/>
+    </linearGradient>
+    <linearGradient id="cluster-panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#173b3d"/>
+      <stop offset="1" stop-color="#10282f"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#75b8da" stroke-opacity=".035"/>
+    </pattern>
+    <marker id="backup-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M1 1L9 5L1 9Z" fill="#61dafa"/>
+    </marker>
+    <marker id="management-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M1 1L9 5L1 9Z" fill="#8ce5af"/>
+    </marker>
+    <marker id="secure-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M1 1L9 5L1 9Z" fill="#c5d8e9"/>
+    </marker>
+    <symbol id="cloud" viewBox="0 0 32 32">
+      <path d="M8 25h17a6 6 0 0 0 1-12 10 10 0 0 0-19-2A7 7 0 0 0 8 25Z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="server" viewBox="0 0 32 32">
+      <rect x="3" y="4" width="26" height="10" rx="3" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.6"/>
+      <rect x="3" y="18" width="26" height="10" rx="3" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M8 9h10M8 23h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="24" cy="9" r="1.5" fill="currentColor"/>
+      <circle cx="24" cy="23" r="1.5" fill="currentColor"/>
+    </symbol>
+    <symbol id="database" viewBox="0 0 32 32">
+      <path d="M5 8v16c0 3 5 5 11 5s11-2 11-5V8" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.6"/>
+      <ellipse cx="16" cy="8" rx="11" ry="5" fill="currentColor" fill-opacity=".16" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M5 16c0 3 5 5 11 5s11-2 11-5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="bucket" viewBox="0 0 32 32">
+      <path d="M5 8l3 19c4 3 12 3 16 0l3-19" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <ellipse cx="16" cy="8" rx="11" ry="4" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="user" viewBox="0 0 32 32">
+      <circle cx="16" cy="9" r="6" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M5 29v-5a11 11 0 0 1 22 0v5Z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M12 23l-3 3 3 3m8-6 3 3-3 3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="shield" viewBox="0 0 32 32">
+      <path d="M16 3L27 7v9c0 6-5 10-11 14C10 26 5 22 5 16V7Z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M11 16l4 4 7-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="kubernetes" viewBox="0 0 32 32">
+      <path d="M16 2l11 6 3 13-8 9H10l-8-9L5 8Z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="16" cy="16" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M16 7v18M8 12l16 8M8 20l16-8" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <style>
+      text { font-family: 'Segoe UI', Arial, sans-serif; fill: #e9f3fc; }
+      .muted { fill: #aec5d9; }
+      .cyan { fill: #70ddf7; }
+      .green { fill: #a1edbe; }
+      .panel { fill: #0f2237; stroke: #2a4964; stroke-width: 1.3; }
+      .vpc { fill: #0a192a; stroke: #3b6178; stroke-width: 1.2; }
+      .workload { fill: #122c43; stroke: #2c526d; stroke-width: 1; }
+      .storage { fill: #10263b; stroke: #34617b; stroke-width: 1; }
+      .bucket-card { fill: #173a50; stroke: #3a7087; stroke-width: 1; }
+      .backup { fill: none; stroke: #61dafa; stroke-width: 2; stroke-dasharray: 7 7; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#backup-arrow); }
+      .management { fill: none; stroke: #8ce5af; stroke-width: 2; stroke-dasharray: 5 7; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#management-arrow); }
+    </style>
+  </defs>
+
+  <rect width="1440" height="800" rx="26" fill="url(#background)"/>
+  <rect width="1440" height="800" rx="26" fill="url(#grid)"/>
+  <rect x="32" y="32" width="5" height="51" rx="2.5" fill="#67dbf4"/>
+  <text x="51" y="55" font-size="30" font-weight="700" letter-spacing="1">BERCA MSP · BACKUP AS A SERVICE</text>
+  <text x="52" y="84" font-size="19" class="muted">Hybrid multi-tenant architecture</text>
+  <path d="M1074 45h35" class="backup"/>
+  <text x="1121" y="51" font-size="17" class="muted">Backup</text>
+  <path d="M1208 45h35" class="management"/>
+  <text x="1255" y="51" font-size="17" class="muted">Management</text>
+
+  <rect x="32" y="108" width="1376" height="440" rx="24" fill="url(#cloud-panel)" stroke="#3a6988" stroke-width="1.5"/>
+  <use href="#cloud" x="53" y="126" width="34" height="34" color="#73def7"/>
+  <text x="98" y="152" font-size="25" font-weight="650">AWS Cloud</text>
+  <text x="257" y="151" font-size="18" class="muted">REGION</text>
+  <rect x="340" y="128" width="189" height="34" rx="17" fill="#163b52" stroke="#386b86"/>
+  <text x="434.5" y="151" text-anchor="middle" font-size="18" class="cyan">ap-southeast-3</text>
+  <path d="M554 145h832" stroke="#25465f"/>
+
+  <rect x="52" y="180" width="426" height="349" rx="17" class="panel"/>
+  <rect x="52" y="197" width="4" height="38" rx="2" fill="#9ce7b6"/>
+  <text x="72" y="210" font-size="23" font-weight="650">Berca MSP-Backup</text>
+  <text x="72" y="236" font-size="18" class="muted">ap-southeast-3a</text>
+  <rect x="68" y="246" width="394" height="268" rx="13" class="vpc"/>
+  <text x="85" y="271" font-size="18" font-weight="600" class="cyan">Berca_MSP_VPC</text>
+  <rect x="84" y="280" width="362" height="127" rx="11" fill="url(#cluster-panel)" stroke="#4b856e"/>
+  <text x="100" y="305" font-size="20" font-weight="650" class="green">MSP_Backup_Cluster</text>
+  <use href="#server" x="101" y="320" width="29" height="29" color="#a1edbe"/>
+  <text x="141" y="339" font-size="18" font-weight="600">Cohesity cluster</text>
+  <text x="141" y="363" font-size="17" class="muted">EC2 compute · EBS volumes</text>
+  <use href="#shield" x="104" y="372" width="23" height="23" color="#a1edbe"/>
+  <text x="141" y="389" font-size="17" class="green">Malware scanning</text>
+  <rect x="84" y="417" width="362" height="83" rx="11" class="storage"/>
+  <text x="99" y="439" font-size="16" font-weight="600" class="cyan">S3 multitenancy · Storage domains</text>
+  <g text-anchor="middle" font-size="16">
+    <rect x="94" y="447" width="109" height="45" rx="8" class="bucket-card"/>
+    <text x="148.5" y="465" font-weight="600">Tenant X</text>
+    <text x="148.5" y="486" class="muted">Bucket 10TB</text>
+    <rect x="210" y="447" width="109" height="45" rx="8" class="bucket-card"/>
+    <text x="264.5" y="465" font-weight="600">Tenant Y</text>
+    <text x="264.5" y="486" class="muted">Bucket 10TB</text>
+    <rect x="326" y="447" width="109" height="45" rx="8" class="bucket-card"/>
+    <text x="380.5" y="465" font-weight="600">Tenant Z</text>
+    <text x="380.5" y="486" class="muted">Bucket 10TB</text>
+  </g>
+
+  <rect x="550" y="180" width="388" height="349" rx="17" class="panel"/>
+  <rect x="550" y="197" width="4" height="38" rx="2" fill="#67dbf4"/>
+  <text x="570" y="210" font-size="23" font-weight="650">User_Tenant_X</text>
+  <text x="570" y="236" font-size="18" class="muted">ap-southeast-3c</text>
+  <rect x="566" y="246" width="356" height="268" rx="13" class="vpc"/>
+  <text x="583" y="271" font-size="18" font-weight="600" class="cyan">Tenant_Y_VPC</text>
+  <rect x="582" y="284" width="324" height="214" rx="11" class="workload"/>
+  <text x="598" y="310" font-size="16" font-weight="650" letter-spacing="1" class="muted">SOURCE WORKLOADS</text>
+  <use href="#user" x="598" y="331" width="32" height="32" color="#73def7"/>
+  <text x="646" y="347" font-size="19" font-weight="600">AWS Account ID</text>
+  <text x="646" y="375" font-size="18" class="muted">IAM</text>
+  <path d="M598 396h292" stroke="#31516b"/>
+  <use href="#database" x="598" y="420" width="34" height="34" color="#73def7"/>
+  <text x="646" y="438" font-size="20" font-weight="600">RDS–Aurora</text>
+  <text x="646" y="466" font-size="17" class="muted">Database workloads</text>
+
+  <rect x="972" y="180" width="416" height="349" rx="17" class="panel"/>
+  <rect x="972" y="197" width="4" height="38" rx="2" fill="#67dbf4"/>
+  <text x="992" y="210" font-size="23" font-weight="650">User_Tenant_Y</text>
+  <text x="992" y="236" font-size="18" class="muted">ap-southeast-3b</text>
+  <rect x="988" y="246" width="384" height="268" rx="13" class="vpc"/>
+  <text x="1005" y="271" font-size="18" font-weight="600" class="cyan">Tenant_X_VPC</text>
+  <rect x="1004" y="284" width="352" height="214" rx="11" class="workload"/>
+  <text x="1020" y="310" font-size="16" font-weight="650" letter-spacing="1" class="muted">SOURCE WORKLOADS</text>
+  <use href="#cloud" x="1020" y="321" width="24" height="24" color="#73def7"/>
+  <text x="1058" y="340" font-size="18">AWS resources</text>
+  <use href="#kubernetes" x="1021" y="352" width="23" height="23" color="#73def7"/>
+  <text x="1058" y="370" font-size="18">Kubernetes (RHEL 8.5)</text>
+  <use href="#database" x="1021" y="382" width="23" height="23" color="#73def7"/>
+  <text x="1058" y="400" font-size="18">Oracle 19c (RHEL 8.10)</text>
+  <path d="M1020 414h320" stroke="#31516b"/>
+  <use href="#user" x="1021" y="424" width="24" height="24" color="#73def7"/>
+  <text x="1058" y="443" font-size="18">AWS Account ID · IAM</text>
+  <use href="#database" x="1021" y="458" width="24" height="24" color="#73def7"/>
+  <text x="1058" y="477" font-size="18" font-weight="600">RDS–Aurora</text>
+
+  <path d="M582 326H520V326H446" class="backup"/>
+  <path d="M1004 390H956V538H506V366H446" class="backup"/>
+
+  <rect x="52" y="568" width="426" height="184" rx="17" class="panel"/>
+  <text x="72" y="597" font-size="22" font-weight="650">Helios centralized management</text>
+  <use href="#user" x="86" y="625" width="34" height="34" color="#c5d8e9"/>
+  <text x="103" y="687" font-size="18" text-anchor="middle">Admin</text>
+  <path d="M133 650H257" fill="none" stroke="#c5d8e9" stroke-width="1.8" marker-end="url(#secure-arrow)"/>
+  <use href="#shield" x="180" y="620" width="25" height="25" color="#c5d8e9"/>
+  <text x="195" y="677" font-size="16" text-anchor="middle" class="muted">Secure</text>
+  <text x="195" y="699" font-size="16" text-anchor="middle" class="muted">communication</text>
+  <rect x="264" y="616" width="194" height="114" rx="13" fill="url(#cluster-panel)" stroke="#4b856e"/>
+  <use href="#cloud" x="280" y="633" width="33" height="33" color="#a1edbe"/>
+  <text x="324" y="657" font-size="26" font-weight="650" class="green">Helios</text>
+  <text x="283" y="688" font-size="18">Centralized</text>
+  <text x="283" y="713" font-size="18" class="muted">management</text>
+
+  <rect x="548" y="568" width="840" height="184" rx="17" class="panel"/>
+  <text x="568" y="597" font-size="22" font-weight="650">On-Prem</text>
+  <path d="M680 590h688" stroke="#25465f"/>
+  <rect x="568" y="612" width="386" height="124" rx="12" fill="url(#cluster-panel)" stroke="#4b856e"/>
+  <text x="584" y="637" font-size="20" font-weight="650" class="green">Fortknow_Backup_Cluster</text>
+  <g color="#a1edbe">
+    <use href="#server" x="584" y="652" width="45" height="45"/>
+    <use href="#server" x="646" y="652" width="45" height="45"/>
+    <use href="#server" x="708" y="652" width="45" height="45"/>
+  </g>
+  <text x="584" y="720" font-size="18">3 Cohesity nodes</text>
+  <path d="M778 654v66" stroke="#36595a"/>
+  <use href="#shield" x="793" y="657" width="25" height="25" color="#a1edbe"/>
+  <text x="827" y="677" font-size="17" class="green">Malware</text>
+  <text x="827" y="699" font-size="17" class="green">scanning</text>
+
+  <rect x="970" y="612" width="398" height="124" rx="12" class="storage"/>
+  <use href="#bucket" x="984" y="622" width="24" height="24" color="#73def7"/>
+  <text x="1020" y="639" font-size="19" font-weight="600">NetApp C250 · S3 storage</text>
+  <text x="985" y="662" font-size="16" class="cyan">Multitenancy external storage domains</text>
+  <g text-anchor="middle" font-size="16">
+    <rect x="985" y="672" width="116" height="52" rx="8" class="bucket-card"/>
+    <text x="1043" y="692" font-weight="600">Tenant X</text>
+    <text x="1043" y="714" class="muted">Bucket 10TB</text>
+    <rect x="1111" y="672" width="116" height="52" rx="8" class="bucket-card"/>
+    <text x="1169" y="692" font-weight="600">Tenant Y</text>
+    <text x="1169" y="714" class="muted">Bucket 10TB</text>
+    <rect x="1237" y="672" width="116" height="52" rx="8" class="bucket-card"/>
+    <text x="1295" y="692" font-weight="600">Tenant Z</text>
+    <text x="1295" y="714" class="muted">Bucket 10TB</text>
+  </g>
+
+  <path d="M354 730V762H20V344H84" class="management"/>
+  <path d="M458 661H568" class="management"/>
+  <text x="52" y="789" font-size="16" class="muted">Tenant/VPC labels follow source HLD</text>
+  <text x="1388" y="789" font-size="16" text-anchor="end" fill="#92b1ca">HYBRID BACKUP · ARCHITECTURE OVERVIEW</text>
+</svg>

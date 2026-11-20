@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QoderWake · 8-bit Office</title>
+<link rel="stylesheet" href="/classic/style.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"><span>S</span><span>W</span><span>M</span></div>
+      <div class="brand-text">
+        <div class="title">QODERWAKE <span class="sep">//</span> 8-BIT OFFICE</div>
+        <div class="sub" id="hud-sub">BOOTING OFFICE…</div>
+      </div>
+    </div>
+    <nav id="roster" aria-label="Wakers and group conversations"></nav>
+    <div class="hud-right">
+      <span id="conn" class="conn offline">OFFLINE</span>
+      <a id="console-link" class="btn ghost" href="http://127.0.0.1:19820" target="_blank" rel="noreferrer">CONSOLE</a>
+      <a class="btn ghost" href="/">DIGITAL TWIN 2D</a>
+      <span id="clock">--:--</span>
+    </div>
+  </header>
+
+  <main id="stage">
+    <canvas id="office" width="480" height="270" aria-label="8-bit office map"></canvas>
+    <div id="hint">CLICK AN EMPLOYEE TO ASSIGN A TASK</div>
+    <div id="toast" hidden></div>
+  </main>
+
+  <aside id="chat" class="closed" aria-hidden="true">
+    <header class="chat-head">
+      <canvas id="chat-portrait" width="36" height="48"></canvas>
+      <div class="chat-id">
+        <div class="chat-name" id="chat-name">—</div>
+        <div class="chat-role" id="chat-role"></div>
+        <div class="chat-status"><span id="chat-dot" class="dot"></span><span id="chat-status-text">—</span></div>
+      </div>
+      <button id="chat-close" class="x" type="button" aria-label="Close chat">✕</button>
+    </header>
+    <div id="chat-banner" class="banner" hidden></div>
+    <section id="admin-controls" class="admin-controls" hidden aria-label="Wakeadmin permissions">
+      <div>Baca/cari/analisis biasa langsung. Eksekusi: aksi → target → dampak → izin lo → jalan. Guard tetap melindungi file sensitif.</div>
+      <span id="admin-approval-status" role="status">Approval keamanan dikelola di Console QoderWake.</span>
+      <div>
+        <button id="admin-history" class="btn ghost" type="button" aria-pressed="false">RIWAYAT CHAT LAMA</button>
+        <a id="admin-console-link" class="btn ghost" href="http://127.0.0.1:19820/conversations/entry/latest?waker=7c582ea8489a" target="_blank" rel="noreferrer">BUKA TAB CONSOLE</a>
+      </div>
+      <div>Sesi native terpisah dari chat lama; tidak ada task yang dikirim ulang otomatis. Jika panel tidak termuat, buka tab Console.</div>
+    </section>
+    <iframe id="admin-console" title="Sesi interaktif wakeadmin di Console QoderWake" referrerpolicy="no-referrer" hidden></iframe>
+    <div id="chat-log" class="chat-log" aria-live="polite"></div>
+    <div class="quick" id="quick-tasks"></div>
+    <form id="chat-form">
+      <textarea id="chat-input" rows="2" maxlength="8000" placeholder="Assign a task or ask a question…"></textarea>
+      <button id="send" type="submit">SEND</button>
+    </form>
+  </aside>
+</div>
+<script src="/classic/game.js"></script>
+</body>
+</html>

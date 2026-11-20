@@ -1,0 +1,16 @@
+services:
+  office:
+    build: .
+    image: wakerdock:latest
+    container_name: wakerdock-office
+    environment:
+      HOST: 0.0.0.0
+      PORT: "5173"
+    ports:
+      - "5173:5173"
+    volumes:
+      - office-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  office-data:
